@@ -1,0 +1,46 @@
+body {
+    background-color: #000000;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-family: Palatino;
+}
+
+a:link {
+    color:#00FFFF;
+}
+a:visited{
+    color:#FFCC33;
+}
+/*link when clicked*/
+a:active{
+    color:#FF6666;
+}
+img{
+    width: 250px;
+    height: 200px;
+}
+
+/*whoami page*/
+
+.whoami-peynir-image{
+    width: 300px;
+    height: auto;
+}
+.whoami-h1{
+    color: #91AC67;
+}
+.green-text{
+    color: #91AC67;
+}
+/*blog page*/
+.blog-h1{
+    color: #00FFFF;
+}
+.blog-terminator-image{
+    width: 550px;
+    height: auto;
+}
+.blog-bouldering-image{
+    width: 550px;
+    height: auto;
+}
