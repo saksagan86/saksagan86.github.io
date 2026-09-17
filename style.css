@@ -17,7 +17,8 @@ a:active{
 }
 img{
     width: 250px;
-    height: 200px;
+    max-width: 100%;
+    height: auto;
 }
 
 /*whoami page*/
@@ -32,15 +33,13 @@ img{
 .green-text{
     color: #91AC67;
 }
+
 /*blog page*/
+
 .blog-h1{
     color: #00FFFF;
 }
-.blog-terminator-image{
-    width: 550px;
-    height: auto;
-}
+.blog-terminator-image,
 .blog-bouldering-image{
-    width: 550px;
-    height: auto;
+    width: 400px;
 }
