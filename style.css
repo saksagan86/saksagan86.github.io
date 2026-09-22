@@ -43,3 +43,9 @@ img{
 .blog-bouldering-image{
     width: 400px;
 }
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
