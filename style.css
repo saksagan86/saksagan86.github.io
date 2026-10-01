@@ -3,7 +3,15 @@ body {
     color: #FFFFFF;
     font-size: 18px;
     font-family: Palatino;
+    
+    margin: 16px;
+    font-size: 16px;
+    line-height: 1.5;
 }
+h1{
+    font-size: 21px;
+}
+
 
 a:link {
     color:#00FFFF;
@@ -50,4 +58,24 @@ nav {
     gap: 12px;
 }
 
-/*media queries
+/*media queries*/
+@media (min-width:768px){
+    body{
+        margin: 32px;
+        font-size: 18px;
+    }
+    h1{
+        font-size: 32px;
+    }
+
+}
+@media (min-width:1024px){
+    body{
+        margin: 36px;
+        font-size:18px;
+    }
+    h1{
+        font-size:36px;
+    }
+
+}
