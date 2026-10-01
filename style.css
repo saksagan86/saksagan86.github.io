@@ -67,7 +67,6 @@ nav {
     h1{
         font-size: 32px;
     }
-
 }
 @media (min-width:1024px){
     body{
@@ -78,4 +77,12 @@ nav {
         font-size:36px;
     }
 
+}
+@media (max-widt:768px){
+    nav{
+        gap: 8px;
+    }
+    nav a{
+        padding:6px 4px;
+    }
 }
