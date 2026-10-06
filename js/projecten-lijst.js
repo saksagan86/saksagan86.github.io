@@ -24,35 +24,8 @@ const projecten = [
     {
         id:4,
         titel:"Ubuntu Home Server",
-        bescghrijving:"Een Ubuntu home server die ik heb opgezet om mijn websites te hosten en linux te leren.",
+        beschrijving:"Een Ubuntu home server die ik heb opgezet om mijn websites te hosten en linux te leren.",
         link:"",
         github_link:""
     }
 ]
-
-const projectenLijst = document.getElementById("projecten-lijst");
-
-function toonProjecten(lijst) {
-    projectenLijst.textContent = "";
-
-    lijst.forEach((project) => {
-        const article = document.createElement("article");
-
-        const titel = document.createElement("h3");
-        titel.textContent = project.titel;
-        article.appendChild(titel);
-
-        const url = project.link || project.github_link;
-
-        if (url) {
-            const link = document.createElement("a");
-            link.href = url;
-            link.textContent = "Bekijk project";
-            article.appendChild(link);
-        }
-
-        projectenLijst.appendChild(article);
-    });
-}
-
-toonProjecten(projecten);
