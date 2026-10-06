@@ -67,7 +67,7 @@ form label{
 form input,
 form textarea{
     display:block;
-    margin: top 4px;
+    margin-top: 4px;
 }
 
 nav {
@@ -96,7 +96,7 @@ nav {
     }
 
 }
-@media (max-widt:768px){
+@media (max-width:768px){
     nav{
         gap: 8px;
     }
