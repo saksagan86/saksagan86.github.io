@@ -29,3 +29,34 @@ const projecten = [
         github_link:""
     }
 ]
+
+const projectenLijst = document.getElementById("projecten-lijst");
+
+function toonProjecten(lijst) {
+    projectenLijst.textContent = "";
+
+    lijst.forEach((project) => {
+        const article = document.createElement("article");
+
+        const titel = document.createElement("h3");
+        titel.textContent = project.titel;
+        article.appendChild(titel);
+
+        const beschrijving = document.createElement("p");
+        beschrijving.textContent = project.beschrijving;
+        article.appendChild(beschrijving);
+
+        const url = project.link || project.github_link;
+
+        if (url) {
+            const link = document.createElement("a");
+            link.href = url;
+            link.textContent = "Bekijk project";
+            article.appendChild(link);
+        }
+
+        projectenLijst.appendChild(article);
+    });
+}
+
+toonProjecten(projecten);
