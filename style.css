@@ -52,6 +52,24 @@ img{
     width: 400px;
 }
 
+/*input box voor de contact pagina*/
+.input-box{
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+}
+/**/
+form label{
+    display:block;
+    margin-bottom: 12px;
+}
+form input,
+form textarea{
+    display:block;
+    margin: top 4px;
+}
+
 nav {
     display: flex;
     flex-wrap: wrap;
