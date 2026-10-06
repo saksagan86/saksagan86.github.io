@@ -17,6 +17,11 @@ const projecten = [
         titel:"Persoonlijke Website",
         link:"https://www.saksagan86.github.io",
         github_link:"https://github.com/saksagan86/saksagan86.github.io",
+    },
+    {
+        id:4,
+        titel:"Ubuntu Home Server",
+        link:"",
+        github_link:""
     }
-
 ]
