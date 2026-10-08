@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script src="js/projecten-lijst.js" defer></script>
+    <script src="js/github-api.js" defer></script>
     <title>projects</title>
 
 </head>
@@ -24,17 +26,14 @@
     <main>
         <section>
             <h2>Mijn Projecten</h2>
-            <article>
-                <h3>All Fit</h3>
-                <p>Een web applicatie ontwikkeld met ASP.NET Core en React.</p>
-                <a href="https://github.com/saksagan86/AllFit-Groep2" >Klik</a>
-            </article>
-            <article>
-                <h3>Persoonlijke website</h3>
-                <p>Een persoonlijke website gemaakt met HTML en css</p>
-                <a href="https://saksagan86.github.io">Klik</a>
-            </article>
-                <p>Bekijk oo mijn <a href="https://www.github.com/saksagan86">github</a></p>
+            <button type="button" id="sorteer-projecten">Sorteer op titel (A-Z)</button>
+            <div id="projecten-lijst"></div>
+        </section>
+        <section>
+            <h2>Mijn Github</h2>
+            <p id="github-status" role="status"></p>
+            <div id="github-resultaat"></div>
+            <p>Bekijk ook mijn <a href="https://www.github.com/saksagan86">github</a></p>
         </section>
     </main>
     <footer>
