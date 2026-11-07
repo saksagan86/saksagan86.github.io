@@ -1,0 +1,72 @@
+using Microsoft.AspNetCore.Mvc;
+using PortfolioApi.Dtos;
+using PortfolioApi.Services;
+
+namespace PortfolioApi.Controllers;
+
+[ApiController]
+[Route("api/projects")]
+public class ProjectsController : ControllerBase
+{
+    private readonly ProjectService _projectService;
+
+    public ProjectsController(ProjectService projectService)
+    {
+        _projectService = projectService;
+    }
+
+    // GET: api/projects
+    [HttpGet]
+    public async Task<ActionResult<List<ProjectDto>>> GetAll()
+    {
+        var projects = await _projectService.GetAllAsync();
+        return Ok(projects);
+    }
+
+    // GET: api/projects/5
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<ProjectDto>> GetById(int id)
+    {
+        var project = await _projectService.GetByIdAsync(id);
+        if (project is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(project);
+    }
+
+    // POST: api/projects
+    [HttpPost]
+    public async Task<ActionResult<ProjectDto>> Create(CreateProjectDto dto)
+    {
+        var project = await _projectService.CreateAsync(dto);
+        return CreatedAtAction(nameof(GetById), new { id = project.Id }, project);
+    }
+
+    // PUT: api/projects/5
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult<ProjectDto>> Update(int id, UpdateProjectDto dto)
+    {
+        var project = await _projectService.UpdateAsync(id, dto);
+        if (project is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(project);
+    }
+
+    // DELETE: api/projects/5
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var deleted = await _projectService.DeleteAsync(id);
+        if (!deleted)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+}
