@@ -8,9 +8,9 @@ namespace PortfolioApi.Controllers;
 [Route("api/blogposts")]
 public class BlogpostsController : ControllerBase
 {
-    private readonly BlogpostService _blogpostService;
+    private readonly IBlogpostService _blogpostService;
 
-    public BlogpostsController(BlogpostService blogpostService)
+    public BlogpostsController(IBlogpostService blogpostService)
     {
         _blogpostService = blogpostService;
     }

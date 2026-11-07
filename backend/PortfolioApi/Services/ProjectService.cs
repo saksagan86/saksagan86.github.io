@@ -5,7 +5,7 @@ using PortfolioApi.Dtos;
 
 namespace PortfolioApi.Services;
 
-public class ProjectService
+public class ProjectService : IProjectService
 {
     private readonly PortfolioDbContext _context;
 

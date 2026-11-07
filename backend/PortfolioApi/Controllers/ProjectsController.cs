@@ -8,9 +8,9 @@ namespace PortfolioApi.Controllers;
 [Route("api/projects")]
 public class ProjectsController : ControllerBase
 {
-    private readonly ProjectService _projectService;
+    private readonly IProjectService _projectService;
 
-    public ProjectsController(ProjectService projectService)
+    public ProjectsController(IProjectService projectService)
     {
         _projectService = projectService;
     }
