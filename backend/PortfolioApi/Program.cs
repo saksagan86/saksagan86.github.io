@@ -19,6 +19,7 @@ builder.Services.AddDbContext<PortfolioDbContext>(options =>
 
 // Services (applicatielogica)
 builder.Services.AddScoped<ProjectService>();
+builder.Services.AddScoped<BlogpostService>();
 
 var app = builder.Build();
 
