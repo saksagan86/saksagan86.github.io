@@ -33,7 +33,9 @@ De connectionstring staat in `appsettings.json`. Er wordt Windows-authenticatie 
 
 Ga naar de map `backend/PortfolioApi` en voer uit: `dotnet ef database update`
 
-Dit maakt de database PortfolioDb aan met de tabellen Projects en Blogposts.
+Dit maakt de database PortfolioDb aan met de tabellen Projects en Blogposts, en (sinds Opdracht 4) de Identity-tabellen voor gebruikers en rollen (AspNetUsers, AspNetRoles, AspNetUserRoles en andere).
+
+De migraties worden ook automatisch toegepast als de applicatie start. Bij het starten worden ook de rollen Gast, Editor en Admin aangemaakt als ze nog niet bestaan (`Data/RolSeeder.cs`). Er worden daarbij geen gebruikers of wachtwoorden aangemaakt.
 
 ### Starten
 
@@ -50,3 +52,28 @@ Voor projecten en blogposts zijn er elk vijf endpoints:
 - `POST /api/projects` en `POST /api/blogposts`: nieuw item aanmaken
 - `PUT /api/projects/{id}` en `PUT /api/blogposts/{id}`: item wijzigen
 - `DELETE /api/projects/{id}` en `DELETE /api/blogposts/{id}`: item verwijderen
+
+Iedereen mag de GET-routes gebruiken. POST, PUT en DELETE mogen alleen door een ingelogde gebruiker met de rol Editor of Admin. Zonder login krijg je 401, met een andere rol (bijvoorbeeld Gast) krijg je 403.
+
+## Opdracht 4: inloggen en rollen
+
+Voor gebruikers gebruik ik ASP.NET Core Identity met EF Core. De gebruikers en rollen staan in dezelfde SQL Server-database.
+
+- `POST /api/auth/register`: nieuwe gebruiker maken. Iedere nieuwe gebruiker krijgt de rol Gast. Via deze route kun je nooit Editor of Admin worden.
+- `POST /api/auth/login`: inloggen. Als het lukt, stuurt de API een authenticatiecookie terug. Swagger en de browser sturen die cookie daarna automatisch mee.
+- `POST /api/auth/logout`: uitloggen.
+- `GET /api/auth/me`: laat zien wie er is ingelogd en welke rollen die gebruiker heeft.
+
+### Een gewone gebruiker, Editor en Admin maken (lokaal)
+
+1. Start de API en registreer drie gebruikers via `POST /api/auth/register` in Swagger. Ze krijgen allemaal de rol Gast. Kies zelf een wachtwoord; dat komt nergens in de repository.
+2. Open `backend/scripts/rol-toekennen.sql` in SSMS. Vul bij `@Email` het e-mailadres in en bij `@Rol` de rol (`Editor` of `Admin`) en voer het script uit. Doe dit een keer voor de Editor en een keer voor de Admin.
+3. Log daarna opnieuw in met die gebruiker. De rollen staan in de cookie, dus na een rolwijziging moet je altijd opnieuw inloggen.
+
+## Tests
+
+In de map `backend/PortfolioApi.Tests` staat een xUnit-testproject. Het zit samen met de API in de solution `backend/PortfolioApi.slnx`.
+
+De tests starten de echte API in het geheugen en sturen HTTP-requests (met `WebApplicationFactory`). Ze gebruiken een aparte database `PortfolioDb_Test` (zie `appsettings.Testing.json`), zodat de gewone database niet wordt aangeraakt. Die testdatabase wordt bij elke testrun opnieuw aangemaakt.
+
+Tests uitvoeren: ga naar de map `backend` en voer uit: `dotnet test`
