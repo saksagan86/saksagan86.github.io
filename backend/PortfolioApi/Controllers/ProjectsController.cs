@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PortfolioApi.Auth;
 using PortfolioApi.Dtos;
 using PortfolioApi.Services;
 
@@ -38,6 +40,7 @@ public class ProjectsController : ControllerBase
 
     // POST: api/projects
     [HttpPost]
+    [Authorize(Policy = Policies.KanBewerken)]
     public async Task<ActionResult<ProjectDto>> Create(CreateProjectDto dto)
     {
         var project = await _projectService.CreateAsync(dto);
@@ -46,6 +49,7 @@ public class ProjectsController : ControllerBase
 
     // PUT: api/projects/5
     [HttpPut("{id:int}")]
+    [Authorize(Policy = Policies.KanBewerken)]
     public async Task<ActionResult<ProjectDto>> Update(int id, UpdateProjectDto dto)
     {
         var project = await _projectService.UpdateAsync(id, dto);
@@ -59,6 +63,7 @@ public class ProjectsController : ControllerBase
 
     // DELETE: api/projects/5
     [HttpDelete("{id:int}")]
+    [Authorize(Policy = Policies.KanBewerken)]
     public async Task<IActionResult> Delete(int id)
     {
         var deleted = await _projectService.DeleteAsync(id);

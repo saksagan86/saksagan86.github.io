@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PortfolioApi.Auth;
 using PortfolioApi.Dtos;
 using PortfolioApi.Services;
 
@@ -38,6 +40,7 @@ public class BlogpostsController : ControllerBase
 
     // POST: api/blogposts
     [HttpPost]
+    [Authorize(Policy = Policies.KanBewerken)]
     public async Task<ActionResult<BlogpostDto>> Create(CreateBlogpostDto dto)
     {
         var blogpost = await _blogpostService.CreateAsync(dto);
@@ -46,6 +49,7 @@ public class BlogpostsController : ControllerBase
 
     // PUT: api/blogposts/5
     [HttpPut("{id:int}")]
+    [Authorize(Policy = Policies.KanBewerken)]
     public async Task<ActionResult<BlogpostDto>> Update(int id, UpdateBlogpostDto dto)
     {
         var blogpost = await _blogpostService.UpdateAsync(id, dto);
@@ -59,6 +63,7 @@ public class BlogpostsController : ControllerBase
 
     // DELETE: api/blogposts/5
     [HttpDelete("{id:int}")]
+    [Authorize(Policy = Policies.KanBewerken)]
     public async Task<IActionResult> Delete(int id)
     {
         var deleted = await _blogpostService.DeleteAsync(id);
